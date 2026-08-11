@@ -1,1 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Gowri J Nair — Computer Science Portfolio</title>
+<style>
+:root{
+  --navy:#1F3864;--accent:#2E74B5;--accent-light:#E6F1FB;--accent-mid:#B5D4F4;
+  --text:#1a1a1a;--muted:#5a5a5a;--border:#e2e2e2;--bg:#ffffff;--bg2:#f7f8fa;--bg3:#f0f2f5;
+  --radius:12px;--radius-lg:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--bg3);font-size:16px;line-height:1.65}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
+.nav-logo{font-weight:700;color:var(--navy);font-size:18px;letter-spacing:-.01em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:15px;color:var(--muted);font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent);text-decoration:none}
+
+/* ── PAGE WRAPPER ── */
+.page{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 5rem}
+
+/* ── HERO ── */
+.hero{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:3rem 2.5rem;display:flex;align-items:center;gap:2.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.avatar-wrap{flex-shrink:0}
+.avatar{width:120px;height:120px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;color:var(--accent);border:3px solid var(--accent-mid);object-fit:cover;overflow:hidden}
+.hero-text{flex:1;min-width:260px}
+.hero-text h1{font-size:38px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.02em}
+.hero-text .subtitle{font-size:17px;color:var(--muted);margin-bottom:1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.relocate-tag{display:inline-flex;align-items:center;gap:5px;font-size:13px;padding:4px 13px;border-radius:100px;background:#EAF3DE;border:1px solid #C0DD97;color:#3B6D11;font-weight:500}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.1rem}
+.contact-row a{font-size:14px;color:var(--accent);display:flex;align-items:center;gap:6px;padding:7px 16px;border:1px solid var(--accent-mid);border-radius:100px;background:var(--accent-light);font-weight:500;transition:background .2s}
+.contact-row a:hover{background:var(--accent-mid);text-decoration:none}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.25rem}
+.cta-btn{font-size:14px;font-weight:600;padding:10px 20px;border-radius:8px;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.cta-btn.primary{background:var(--navy);color:#fff}
+.cta-btn.primary:hover{background:var(--accent);text-decoration:none}
+.cta-btn.secondary{background:var(--bg);color:var(--navy);border:1.5px solid var(--navy)}
+.cta-btn.secondary:hover{background:var(--accent-light);text-decoration:none}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-size:13px;padding:5px 14px;border-radius:100px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-weight:500}
+.badge.hi{background:var(--accent-light);border-color:var(--accent-mid);color:var(--accent);font-weight:600}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1rem;text-align:center}
+.stat-card .num{font-size:30px;font-weight:800;color:var(--navy)}
+.stat-card .lbl{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ── SECTION ── */
+.section{margin-bottom:2.5rem}
+.section-title{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:12px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-intro{font-size:15px;color:var(--muted);margin:-.75rem 0 1.25rem;max-width:760px}
+
+/* ── ABOUT ── */
+.about-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem 2.25rem}
+.about-card p{font-size:15.5px;color:var(--text);line-height:1.8;margin-bottom:12px}
+.about-card p:last-child{margin-bottom:0}
+
+/* ── PLACEHOLDER NOTE ── */
+.placeholder-note{background:#FFF8E1;border:1.5px dashed #E3BE5C;border-radius:var(--radius);padding:1.25rem 1.5rem;color:#8a6d1a;font-size:14.5px;font-style:italic;line-height:1.7}
+
+/* ── PROJECT CARDS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.pcard{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .25s,border-color .25s}
+.pcard:hover{box-shadow:0 6px 28px rgba(30,56,100,.1);border-color:var(--accent-mid)}
+
+/* ── SCREENSHOT / CAROUSEL ── */
+.screenshot{width:100%;aspect-ratio:16/9;background:var(--bg2);border-bottom:1px solid var(--border);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer}
+.screenshot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.screenshot:hover img{transform:scale(1.03)}
+.expand-hint{display:none}
+.carousel-track{display:flex;transition:transform .4s ease-in-out;width:100%;height:100%}
+.carousel-track img{width:100%;height:100%;object-fit:cover;flex-shrink:0}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(31,56,100,.72);color:#fff;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0;transition:opacity .2s,background .2s;z-index:10}
+.screenshot:hover .carousel-btn{opacity:1}
+.carousel-btn:hover{background:rgba(31,56,100,.92)}
+.carousel-btn.prev{left:10px}
+.carousel-btn.next{right:10px}
+.carousel-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:background .2s,width .2s}
+.dot:hover{background:rgba(255,255,255,.8)}
+.dot.active{background:#fff;width:20px;border-radius:4px}
+
+/* ── CARD BODY ── */
+.pcard-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;gap:12px}
+.pcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.pcard-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
+.pcard-icon.bi{background:var(--accent-light)}
+.pcard-icon.ml{background:#EAF3DE}
+.pcard-icon.db{background:#FAEEDA}
+.pcard-tag{font-size:12px;padding:4px 11px;border-radius:100px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);white-space:nowrap;font-weight:500}
+.pcard-body h3{font-size:18px;font-weight:700;color:var(--navy);line-height:1.35}
+.pcard-body p{font-size:15px;color:var(--muted);line-height:1.65;flex:1}
+.tool-row{display:flex;flex-wrap:wrap;gap:6px}
+.tool{font-size:12px;padding:3px 11px;border-radius:100px;border:1px solid var(--border);color:var(--muted);background:var(--bg2);font-weight:500}
+.pcard-footer{border-top:1px solid var(--border);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.pcard-footer a{font-size:14px;color:var(--accent);display:flex;align-items:center;gap:5px;font-weight:500}
+.pcard-footer a:hover{text-decoration:underline}
+.no-link{font-size:13px;color:var(--muted);font-style:italic}
+
+/* ── LIGHTBOX ── */
+#lightbox{display:none;position:fixed;inset:0;background:rgba(10,15,30,.88);z-index:1000;align-items:center;justify-content:center;padding:1.5rem}
+#lightbox.open{display:flex}
+.lb-inner{position:relative;max-width:1200px;width:100%;background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.5)}
+.lb-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--border);background:var(--bg)}
+.lb-title{font-size:16px;font-weight:700;color:var(--navy)}
+.lb-close{background:none;border:none;font-size:24px;cursor:pointer;color:var(--muted);line-height:1;padding:0 4px;transition:color .2s}
+.lb-close:hover{color:var(--navy)}
+.lb-img-wrap{position:relative;background:#000;display:flex;align-items:center;justify-content:center;min-height:300px}
+.lb-track{display:flex;transition:transform .4s ease-in-out;width:100%}
+.lb-track img{width:100%;flex-shrink:0;object-fit:contain;max-height:75vh}
+.lb-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(31,56,100,.8);color:#fff;border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10}
+.lb-btn:hover{background:rgba(31,56,100,1)}
+.lb-btn.prev{left:14px}
+.lb-btn.next{right:14px}
+.lb-dots{display:flex;justify-content:center;gap:8px;padding:.875rem 0;background:var(--bg)}
+.lb-dot{width:10px;height:10px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .2s,width .2s}
+.lb-dot.active{background:var(--accent);width:24px;border-radius:5px}
+
+/* ── XAI WIDGET ── */
+.xai-widget{width:100%;height:100%;background:#fdfdfd;display:flex;flex-direction:column;padding:14px 16px;box-sizing:border-box}
+.xai-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:10px}
+.xai-title{font-size:14px;font-weight:700;color:var(--navy)}
+.xai-tabs{display:flex;gap:4px}
+.xai-tab-btn{font-size:11px;padding:3px 9px;border-radius:100px;border:1px solid var(--border);background:var(--bg2);cursor:pointer;color:var(--muted);font-weight:600;transition:all .2s}
+.xai-tab-btn.active{background:#EAF3DE;border-color:#C0DD97;color:#3B6D11}
+.xai-content{flex:1;display:flex;flex-direction:column;justify-content:center}
+.xai-bar-chart{display:flex;flex-direction:column;gap:8px}
+.xai-bar-row{display:flex;align-items:center;gap:10px;cursor:help}
+.xai-bar-label{width:90px;font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}
+.xai-bar-container{flex:1;height:14px;background:var(--bg2);border-radius:5px;overflow:hidden;border:1px solid rgba(0,0,0,.05)}
+.xai-bar-fill{height:100%;background:#a3db74;border-radius:5px;transition:width .8s cubic-bezier(.4,0,.2,1),background-color .2s}
+.xai-bar-row:hover .xai-bar-fill{background:#3B6D11}
+.xai-bar-val{width:36px;font-size:12px;font-weight:700;color:var(--navy)}
+.shap-force-plot{display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;height:100%}
+.shap-scale{width:100%;height:26px;display:flex;border-radius:5px;overflow:hidden;border:1px solid var(--border)}
+.shap-push-higher{background:#ffcdd2;flex:6;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#c62828;font-size:11px;font-weight:700;white-space:nowrap}
+.shap-push-lower{background:#bbdefb;flex:4;display:flex;align-items:center;justify-content:flex-start;padding-left:8px;color:#1565c0;font-size:11px;font-weight:700;white-space:nowrap}
+.shap-base-val{font-size:12px;color:var(--text);text-align:center}
+
+/* ── PET WIDGET ── */
+.pet-widget{width:100%;height:100%;background:#fffdf9;display:flex;flex-direction:column;padding:12px 14px;box-sizing:border-box}
+.pet-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #fde68a;padding-bottom:5px;margin-bottom:8px}
+.pet-title{font-size:14px;font-weight:700;color:#854F0B}
+.pet-sim-form{display:flex;gap:5px;margin-bottom:8px;align-items:center;flex-wrap:wrap}
+.pet-select{font-size:11px;padding:3px 6px;border-radius:5px;border:1px solid #fde68a;background:#fff;color:#5c4400}
+.pet-btn{font-size:11px;padding:3px 10px;border-radius:5px;border:none;background:#854F0B;color:#fff;font-weight:700;cursor:pointer;transition:background .2s}
+.pet-btn:hover{background:#5c4400}
+.pet-table-container{flex:1;overflow-y:auto;border:1px solid #fde68a;border-radius:5px;background:#fff}
+.pet-table{width:100%;border-collapse:collapse;font-size:11px;text-align:left}
+.pet-table th{background:#FAEEDA;color:#854F0B;padding:5px 8px;font-weight:700;position:sticky;top:0}
+.pet-table td{padding:5px 8px;border-bottom:1px solid #fcf7eb;color:var(--text)}
+.pet-table tr:last-child td{border-bottom:none}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.skill-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem}
+.skill-box .sk-label{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.sk-pills{display:flex;flex-wrap:wrap;gap:7px}
+.sk-pill{font-size:13px;padding:4px 13px;border-radius:100px;background:var(--bg2);border:1px solid var(--border);color:var(--muted);font-weight:500}
+
+/* ── CERTS ── */
+.cert-list{display:flex;flex-direction:column;gap:.875rem}
+.cert{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:16px}
+.cert-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.cert-icon.aws{background:#FAEEDA}
+.cert-icon.pbi{background:var(--accent-light)}
+.cert-info p{font-size:16px;font-weight:700;color:var(--navy)}
+.cert-info span{font-size:13px;color:var(--muted)}
+
+/* ── EDUCATION ── */
+.edu-list{display:flex;flex-direction:column;gap:.875rem}
+.edu{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.edu-left p{font-size:16px;font-weight:700;color:var(--navy)}
+.edu-left span{font-size:14px;color:var(--muted)}
+.edu-right{text-align:right;flex-shrink:0}
+.edu-right .pct{font-size:26px;font-weight:800;color:var(--accent)}
+.edu-right .yr{font-size:13px;color:var(--muted)}
+
+/* ── LANGUAGES ── */
+.lang-row{display:flex;flex-wrap:wrap;gap:.875rem}
+.lang{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.5rem;display:flex;flex-direction:column;gap:4px;min-width:140px}
+.lang .lang-name{font-size:15px;font-weight:600;color:var(--navy)}
+.lang .lang-level{font-size:13px;color:var(--muted)}
+
+/* ── TEACHING / LEADERSHIP CARDS ── */
+.lead-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.lead-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem 1.5rem;display:flex;flex-direction:column;gap:10px;transition:box-shadow .25s,border-color .25s,transform .25s}
+.lead-card:hover{box-shadow:0 6px 28px rgba(30,56,100,.1);border-color:var(--accent-mid);transform:translateY(-4px)}
+.lead-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:2px}
+.lead-icon.a{background:var(--accent-light)}
+.lead-icon.b{background:#EAF3DE}
+.lead-icon.c{background:#FAEEDA}
+.lead-card h3{font-size:17px;font-weight:700;color:var(--navy);line-height:1.35}
+.lead-sub{font-size:13px;color:var(--accent);font-weight:600}
+.lead-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.lead-list li{font-size:14px;color:var(--muted);line-height:1.6;padding-left:17px;position:relative}
+.lead-list li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent-mid)}
+
+.strengths-wrap{margin-top:2rem}
+.strengths-label{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--navy);margin-bottom:14px}
+.strength-pills{display:flex;flex-wrap:wrap;gap:10px}
+.strength-pill{font-size:13px;padding:7px 16px;border-radius:100px;background:var(--accent-light);border:1px solid var(--accent-mid);color:var(--accent);font-weight:600;transition:background .2s,color .2s,transform .2s,box-shadow .2s;cursor:default}
+.strength-pill:hover{background:var(--accent);color:#fff;transform:translateY(-3px);box-shadow:0 6px 16px rgba(46,116,181,.3)}
+
+/* ── RESUME CTA BLOCK ── */
+.resume-block{background:linear-gradient(135deg,var(--navy),var(--accent));border-radius:var(--radius-lg);padding:2.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;color:#fff}
+.resume-block h3{font-size:20px;font-weight:700;margin-bottom:6px}
+.resume-block p{font-size:14.5px;color:rgba(255,255,255,.85)}
+.resume-block .cta-btn.primary{background:#fff;color:var(--navy)}
+.resume-block .cta-btn.primary:hover{background:var(--accent-light);color:var(--navy)}
+
+/* fade-up on scroll */
+.fade-up{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.in-view{opacity:1;transform:translateY(0)}
+.lead-grid .fade-up:nth-child(1){transition-delay:0s}
+.lead-grid .fade-up:nth-child(2){transition-delay:.12s}
+.lead-grid .fade-up:nth-child(3){transition-delay:.24s}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:2.5rem 2rem;font-size:14px;color:var(--muted);border-top:1px solid var(--border);background:var(--bg);margin-top:2rem}
+footer a{color:var(--accent)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .hero{flex-direction:column;gap:1.5rem;text-align:center}
+  .contact-row{justify-content:center}
+  .cta-row{justify-content:center}
+  .badge-row{justify-content:center}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .edu{flex-direction:column}
+  .edu-right{text-align:left}
+  .hero-text h1{font-size:28px}
+  .avatar{width:96px;height:96px;font-size:30px}
+  .lead-grid{grid-template-columns:1fr}
+  .strength-pills{justify-content:center}
+  .resume-block{flex-direction:column;text-align:center}
+}
+@media(min-width:701px) and (max-width:900px){
+  .lead-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#academic-experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="avatar-wrap">
+      <img class="avatar" src="Profile image ln.png" alt="Gowri J Nair"
+        onerror="this.outerHTML='<div class=\'avatar\'>GN</div>'"/>
+    </div>
+    <div class="hero-text">
+      <h1>Gowri J Nair</h1>
+      <p class="subtitle">
+        Aspiring Computer Science Educator | Data Science Professional | Researcher &nbsp;·&nbsp; Bangalore, India
+        <span class="relocate-tag">✈ Available to relocate — Dubai, UAE</span>
+      </p>
+      <div class="contact-row">
+        <a href="mailto:gjnair93@gmail.com">✉ gjnair93@gmail.com</a>
+        <a href="https://www.linkedin.com/in/gowri-j-nair-8471322a6" target="_blank">in LinkedIn</a>
+        <a href="https://github.com/gjnair22" target="_blank">&#x2756; GitHub</a>
+        <a href="tel:+917676425251">&#128222; +91 76764 25251</a>
+      </div>
+      <div class="cta-row">
+        <a class="cta-btn primary" href="#academic-experience">View Experience</a>
+        <a class="cta-btn secondary" href="#research">View Research</a>
+        <a class="cta-btn secondary" href="teaching-resume.pdf" target="_blank">⬇ Download Resume</a>
+        <a class="cta-btn secondary" href="#contact">Contact Me</a>
+      </div>
+      <div class="badge-row">
+        <span class="badge hi">Computer Science</span>
+        <span class="badge hi">Python</span>
+        <span class="badge hi">SQL</span>
+        <span class="badge">Data Science</span>
+        <span class="badge">M.Sc. Computer Science — 86.51%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card"><div class="num">8</div><div class="lbl">Technical &amp; academic projects</div></div>
+    <div class="stat-card"><div class="num">86.51%</div><div class="lbl">M.Sc. aggregate</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="lbl">Certifications</div></div>
+    <div class="stat-card"><div class="num">5</div><div class="lbl">Languages spoken</div></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section" id="about">
+    <div class="section-title">About Me</div>
+    <div class="about-card">
+      <p>I am a Computer Science postgraduate with a specialization in Data Science, currently based in Bangalore and open to relocating to Dubai, UAE. My academic background spans a B.Sc. in Computer Science &amp; Statistics and an M.Sc. in Computer Science (Data Science Specialization), giving me a strong foundation across programming, databases, statistics, and applied data analysis.</p>
+      <p>Alongside my coursework, I have taken on academic coordination and documentation responsibilities within my department — preparing reports for guest lectures, workshops and seminars, and coordinating an academic outreach initiative connecting my institution with a school. These experiences have shaped my interest in academic organization, clear communication, and working closely with faculty and students.</p>
+      <p>I bring a technical, hands-on understanding of modern Computer Science and Data Science tools — Python, SQL, Power BI, and applied machine learning — which I want to translate into clear, practical, and engaging Computer Science and Computer Applications instruction for students.</p>
+    </div>
+  </div>
+
+  <!-- ACADEMIC & ORGANIZATIONAL EXPERIENCE -->
+  <div class="section" id="academic-experience">
+    <div class="section-title">Academic &amp; Organizational Experience</div>
+    <div class="lead-grid">
+
+      <div class="lead-card fade-up">
+        <div class="lead-icon a">📋</div>
+        <h3>Department Documentation &amp; Reporting (M.Sc.)</h3>
+        <span class="lead-sub">Mount Carmel College Autonomous, Bengaluru</span>
+        <ul class="lead-list">
+          <li>Prepared official reports for departmental events including guest lectures, workshops, seminars, industrial visits, technical sessions, and student activities.</li>
+          <li>Coordinated with faculty members to document event proceedings, participant details, outcomes, and post-event summaries.</li>
+          <li>Ensured timely submission of professional reports for departmental records and institutional documentation.</li>
+          <li>Developed strong documentation, professional communication, and administrative coordination skills.</li>
+        </ul>
+      </div>
+
+      <div class="lead-card fade-up">
+        <div class="lead-icon b">🤝</div>
+        <h3>Program Coordinator — MCCIIE School Outreach Initiative</h3>
+        <span class="lead-sub">Mount Carmel Centre for Innovation Incubation &amp; Entrepreneurship (MCCIIE)</span>
+        <ul class="lead-list">
+          <li>Coordinated MCCIIE's first school outreach initiative by connecting the institution with a school.</li>
+          <li>Assisted in planning, communication, scheduling, and logistics from planning through successful execution.</li>
+          <li>Worked with faculty, organizers, and school administration to ensure seamless coordination.</li>
+          <li>Supported event hosting, participant coordination, and on-site execution.</li>
+        </ul>
+      </div>
+
+      <div class="lead-card fade-up">
+        <div class="lead-icon c">🚚</div>
+        <h3>Logistics Head — Carmel Chips Association</h3>
+        <span class="lead-sub">Computer Science Department's Association | B.Sc. Final Year</span>
+        <ul class="lead-list">
+          <li>Led logistics planning and execution for departmental association events.</li>
+          <li>Coordinated venue arrangements, resource allocation, volunteer management, and event operations.</li>
+          <li>Collaborated with faculty coordinators and student volunteers to ensure successful execution of departmental activities.</li>
+          <li>Demonstrated leadership, organizational skills, problem-solving, and effective team coordination.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="strengths-wrap">
+      <div class="strengths-label">CORE STRENGTHS</div>
+      <div class="strength-pills">
+        <span class="strength-pill">Leadership</span>
+        <span class="strength-pill">Program Coordination</span>
+        <span class="strength-pill">Event Management</span>
+        <span class="strength-pill">Documentation &amp; Report Writing</span>
+        <span class="strength-pill">Administrative Coordination</span>
+        <span class="strength-pill">Logistics Management</span>
+        <span class="strength-pill">Planning &amp; Organization</span>
+        <span class="strength-pill">Team Collaboration</span>
+        <span class="strength-pill">Professional Communication</span>
+        <span class="strength-pill">Time Management</span>
+        <span class="strength-pill">Problem Solving</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBJECTS / AREAS OF TEACHING -->
+  <div class="section" id="subjects">
+    <div class="section-title">Subjects &amp; Areas I Can Teach</div>
+    <p class="section-intro">Based on my academic training and technical skill set below.</p>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <div class="sk-label">Computer Science Fundamentals</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Computer Science</span><span class="sk-pill">Computer Applications</span><span class="sk-pill">Database Concepts</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="sk-label">Programming</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Python</span><span class="sk-pill">SQL</span><span class="sk-pill">R</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="sk-label">Data &amp; Analytics</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Data Analytics</span><span class="sk-pill">Power BI / DAX</span><span class="sk-pill">Excel</span><span class="sk-pill">Statistical Analysis</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="sk-label">Applied AI / Data Science</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Machine Learning Basics</span><span class="sk-pill">Scikit-learn</span><span class="sk-pill">Explainable AI (SHAP)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEACHING PHILOSOPHY -->
+  <div class="section" id="philosophy">
+    <div class="section-title">My Approach to Teaching</div>
+    <div class="about-card">
+      <p>I believe Computer Science is best learned by doing. My approach would center on building conceptual clarity first, then reinforcing it through hands-on, practical exercises — writing code, querying real data, and building small working projects — rather than relying on theory alone.</p>
+      <p>I'd want to encourage active student participation and problem-solving over passive listening, and connect classroom concepts to real-world applications — showing students not just how something works, but why it matters. My own background in data analysis and applied AI keeps me grounded in how these tools are actually used, which I hope would help make technical topics feel relevant and approachable rather than abstract.</p>
+      <p>Above all, I'd want to encourage curiosity — creating a space where students feel comfortable experimenting, asking questions, and learning from mistakes.</p>
+    </div>
+  </div>
+
+  <!-- RESEARCH & PUBLICATIONS -->
+  <div class="section" id="research">
+    <div class="section-title">Research &amp; Publications</div>
+    <div class="lead-grid">
+      <div class="lead-card" style="grid-column:1/-1">
+        <div class="lead-icon a">📄</div>
+        <h3>An Explainable Hybrid NLP Framework for Automated Descriptive Answer Evaluation Using Semantic Similarity and Rubric-Based Scoring</h3>
+        <span class="lead-sub">Published in the International Journal for Multidisciplinary Research (IJFMR)</span>
+        <ul class="lead-list">
+          <li>Explores the use of Natural Language Processing (NLP), Machine Learning, Semantic Similarity, and Explainable AI (XAI) to build an automated descriptive answer evaluation framework.</li>
+          <li>Designed to provide transparent and reliable assessment of student responses — combining semantic similarity with rubric-based scoring.</li>
+          <li>Conducted under the guidance of Prof. Uma K.</li>
+          <li>Strengthened applied understanding of Machine Learning, NLP, Explainable AI, and Research Methodology.</li>
+        </ul>
+        <div style="margin-top:8px">
+          <a class="cta-btn primary" href="https://lnkd.in/g7AhSsyi" target="_blank">📖 Read Publication</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACADEMIC / TECHNICAL PROJECTS -->
+  <div class="section" id="projects">
+    <div class="section-title">Academic &amp; Technical Projects</div>
+    <p class="section-intro">Hands-on projects that demonstrate applied programming, data analysis, and AI skills — supporting expertise I draw on when teaching Computer Science and technology concepts.</p>
+    <div class="projects-grid">
+
+      <!-- Supply Chain -->
+      <div class="pcard">
+        <div class="screenshot carousel" id="carousel-supplychain">
+          <div class="carousel-track">
+            <img src="Executive Overview.png" alt="Supply Chain Dashboard — Executive Overview"/>
+            <img src="Inventory and Supplier Performance.png" alt="Supply Chain Dashboard — Inventory & Supplier"/>
+          </div>
+          <button class="carousel-btn prev" onclick="event.stopPropagation();moveCarousel('carousel-supplychain',-1)">&#10094;</button>
+          <button class="carousel-btn next" onclick="event.stopPropagation();moveCarousel('carousel-supplychain',1)">&#10095;</button>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="event.stopPropagation();setSlide('carousel-supplychain',0)"></span>
+            <span class="dot" onclick="event.stopPropagation();setSlide('carousel-supplychain',1)"></span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-icon bi">📦</div>
+            <span class="pcard-tag">Power BI · 2026</span>
+          </div>
+          <h3>Supply Chain Analytics Dashboard</h3>
+          <p>Multi-page dashboard covering inventory, supplier efficiency, manufacturing costs, and logistics KPIs. Built DAX measures for Revenue, Stock Levels, Lead Time, and Defect Rate.</p>
+          <div class="tool-row">
+            <span class="tool">Power BI</span><span class="tool">DAX</span><span class="tool">Power Query</span><span class="tool">Business Intelligence</span>
+          </div>
+        </div>
+        <div class="pcard-footer">
+          <a href="https://github.com/gjnair22/Supply-Chain-Analytics-Dashboard-using-Power-BI" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- HR Analytics -->
+      <div class="pcard">
+        <div class="screenshot carousel" id="carousel-hr">
+          <div class="carousel-track">
+            <img src="Executive Summary.png" alt="HR Dashboard — Executive Summary"/>
+            <img src="Employee Demographics.png" alt="HR Dashboard — Demographics"/>
+            <img src="Compensation and Attrition Drivers.png" alt="HR Dashboard — Attrition Drivers"/>
+          </div>
+          <button class="carousel-btn prev" onclick="event.stopPropagation();moveCarousel('carousel-hr',-1)">&#10094;</button>
+          <button class="carousel-btn next" onclick="event.stopPropagation();moveCarousel('carousel-hr',1)">&#10095;</button>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="event.stopPropagation();setSlide('carousel-hr',0)"></span>
+            <span class="dot" onclick="event.stopPropagation();setSlide('carousel-hr',1)"></span>
+            <span class="dot" onclick="event.stopPropagation();setSlide('carousel-hr',2)"></span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-icon bi">👥</div>
+            <span class="pcard-tag">Power BI · 2026</span>
+          </div>
+          <h3>HR Analytics Dashboard</h3>
+          <p>Analyzed employee attrition, workforce demographics, and compensation trends. Identified key attrition drivers — R&amp;D staff, overtime workers, and lower-income groups.</p>
+          <div class="tool-row">
+            <span class="tool">Power BI</span><span class="tool">DAX</span><span class="tool">Power Query</span><span class="tool">HR Analytics</span>
+          </div>
+        </div>
+        <div class="pcard-footer">
+          <a href="https://github.com/gjnair22/HR-Analytics-Dashboard-using-Power-BI" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- Superstore -->
+      <div class="pcard">
+        <div class="screenshot">
+          <img src="Dashboard.png" alt="Superstore Sales Dashboard"/>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-icon bi">📊</div>
+            <span class="pcard-tag">Power BI · 2025</span>
+          </div>
+          <h3>Superstore Sales &amp; Profit Dashboard</h3>
+          <p>Interactive dashboard on 9,994 retail transactions tracking revenue, profit margin, and sales by region, category, and segment. West led sales; Technology had highest margin.</p>
+          <div class="tool-row">
+            <span class="tool">Power BI</span><span class="tool">DAX</span><span class="tool">Power Query</span><span class="tool">Excel</span>
+          </div>
+        </div>
+        <div class="pcard-footer">
+          <a href="https://github.com/gjnair22/Superstore-Sales-and-Profit-Analysis-Dashboard-using-PowerBI" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- E-Commerce Analytics using Python-->
+      <div class="pcard">
+        <div class="screenshot">
+          <img src="E-Com_Python.png" alt="E-Commerce Dashboard"/>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <span class="pcard-tag">PYTHON · 2025</span>
+          </div>
+          <h3>E-Commerce Analytics using Python</h3>
+          <p>Exploratory Data Analysis using Pandas, NumPy, and Matplotlib. Analyzed customer behaviors, seasonal revenue peaks, payment types, and geographical delivery delays.</p>
+          <div class="tool-row">
+            <span class="tool"> Python </span><span class="tool">Data Cleaning </span><span class="tool">NumPy </span><span class="tool">Matplotlib </span>
+          </div>
+        </div>
+        <div class="pcard-footer">
+          <a href="https://github.com/gjnair22/E-Commerce-Analytics-using-Python.git" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- E-Commerce Analytics using SQL  -->
+      <div class="pcard">
+        <div class="screenshot">
+          <img src="E-Com_SQL.png" alt="E-Commerce SQL"/>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <span class="pcard-tag">SQL · 2025</span>
+          </div>
+          <h3>E-Commerce Analytics using SQL</h3>
+          <p>Designed queries involving multi-table Joins, Common Table Expressions (CTEs), and Window Functions (`RANK`, `LAG`, `LEAD`) to extract action-oriented business KPIs.</p>
+          <div class="tool-row">
+            <span class="tool"> Python </span><span class="tool">Data Cleaning </span><span class="tool">NumPy </span><span class="tool">Matplotlib </span>
+          </div>
+        </div>
+        <div class="pcard-footer">
+          <a href="https://github.com/gjnair22/E-Commerce-Analytics-using-SQL.git" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- Supply Chain SQL -->
+      <div class="pcard">
+        <div class="screenshot carousel" id="carousel-supplychain-sql">
+          <div class="carousel-track">
+            <img src="Supply_Chain .png" alt="Supply Chain Query"/>
+          </div>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="event.stopPropagation();setSlide('carousel-supplychain-sql',0)"></span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-icon bi">📦</div>
+            <span class="pcard-tag">SQL · 2026</span>
+          </div>
+          <h3>Supply Chain Analytics Query</h3>
+          <p>Aggregated metrics using MySQL to dissect delivery logistics, transportation costs, and defect rates. Flagged under-performing suppliers and localized delays.</p>
+          <div class="tool-row">
+            <span class="tool">Power BI</span><span class="tool">DAX</span><span class="tool">Power Query</span><span class="tool">Business Intelligence</span>
+          </div>
+        </div>
+        <div class="pcard-footer">
+          <a href="https://github.com/gjnair22/Supply-Chain-Analytics-using-SQL" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- XAI -->
+      <div class="pcard">
+        <div class="screenshot" style="cursor:default">
+          <div class="xai-widget">
+            <div class="xai-header">
+              <span class="xai-title">🧠 SHAP Explainer (Interactive)</span>
+              <div class="xai-tabs">
+                <button class="xai-tab-btn active" id="xai-tab-imp" onclick="switchXaiTab('imp')">Importance</button>
+                <button class="xai-tab-btn" id="xai-tab-force" onclick="switchXaiTab('force')">Force Plot</button>
+              </div>
+            </div>
+            <div class="xai-content">
+              <div class="xai-bar-chart" id="xai-chart-imp">
+                <div class="xai-bar-row" title="Chest pain type — highest heart risk indicator">
+                  <span class="xai-bar-label">Chest Pain</span>
+                  <div class="xai-bar-container"><div class="xai-bar-fill" style="width:85%"></div></div>
+                  <span class="xai-bar-val">0.85</span>
+                </div>
+                <div class="xai-bar-row" title="Max heart rate in stress test">
+                  <span class="xai-bar-label">Max HR</span>
+                  <div class="xai-bar-container"><div class="xai-bar-fill" style="width:72%"></div></div>
+                  <span class="xai-bar-val">0.72</span>
+                </div>
+                <div class="xai-bar-row" title="Patient age in years">
+                  <span class="xai-bar-label">Age</span>
+                  <div class="xai-bar-container"><div class="xai-bar-fill" style="width:48%"></div></div>
+                  <span class="xai-bar-val">0.48</span>
+                </div>
+                <div class="xai-bar-row" title="Serum cholesterol level (mg/dl)">
+                  <span class="xai-bar-label">Cholesterol</span>
+                  <div class="xai-bar-container"><div class="xai-bar-fill" style="width:35%"></div></div>
+                  <span class="xai-bar-val">0.35</span>
+                </div>
+              </div>
+              <div class="shap-force-plot" id="xai-chart-force" style="display:none">
+                <div class="shap-scale">
+                  <div class="shap-push-lower">◄ Lower Risk (MaxHR=162)</div>
+                  <div class="shap-push-higher">Higher Risk (ChestPain=Asym) ►</div>
+                </div>
+                <div class="shap-base-val"><strong>Output Value: 0.74</strong> &nbsp;(Base Value: 0.35)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-icon ml">🧠</div>
+            <span class="pcard-tag">Python · ML · 2025</span>
+          </div>
+          <h3>Heart Disease Detection Using Explainable AI</h3>
+          <p>Built and benchmarked Logistic Regression, Random Forest &amp; XGBoost on clinical data. Applied SHAP to translate complex model outputs into stakeholder-ready insights.</p>
+          <div class="tool-row">
+            <span class="tool">Python</span><span class="tool">Scikit-learn</span><span class="tool">XGBoost</span><span class="tool">SHAP</span><span class="tool">Pandas</span>
+          </div>
+        </div>
+        <div class="pcard-footer">
+          <span class="no-link">Academic research project</span>
+        </div>
+      </div>
+
+      <!-- Pet Grooming -->
+      <div class="pcard">
+        <div class="screenshot" style="cursor:default">
+          <div class="pet-widget">
+            <div class="pet-header">
+              <span class="pet-title">🗄 Booking DB Simulation</span>
+            </div>
+            <div class="pet-sim-form">
+              <select class="pet-select" id="pet-type">
+                <option>🐕 Dog (Max)</option>
+                <option>🐈 Cat (Luna)</option>
+                <option>🐇 Rabbit (Coco)</option>
+              </select>
+              <select class="pet-select" id="pet-service">
+                <option>Full Groom ($40)</option>
+                <option>Bath &amp; Brush ($20)</option>
+                <option>Nail Trim ($10)</option>
+              </select>
+              <button class="pet-btn" onclick="addBooking()">Book</button>
+            </div>
+            <div class="pet-table-container">
+              <table class="pet-table">
+                <thead><tr><th>ID</th><th>Pet</th><th>Service</th><th>Status</th></tr></thead>
+                <tbody id="pet-rows">
+                  <tr><td>#104</td><td>🐕 Dog (Bella)</td><td>Full Groom</td><td><span style="color:#2e7d32;font-weight:700">Completed</span></td></tr>
+                  <tr><td>#105</td><td>🐈 Cat (Oliver)</td><td>Bath &amp; Brush</td><td><span style="color:#e65100;font-weight:700">Pending</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-icon db">🗄</div>
+            <span class="pcard-tag">PHP · MySQL · 2024</span>
+          </div>
+          <h3>Pet Grooming Booking Platform</h3>
+          <p>Full-stack web app with normalized relational database, CRUD operations, session handling, and an admin dashboard for operational booking analytics.</p>
+          <div class="tool-row">
+            <span class="tool">SQL</span><span class="tool">MySQL</span><span class="tool">PHP</span><span class="tool">Database Design</span>
+          </div>
+        </div>
+        <div class="pcard-footer">
+          <span class="no-link">Academic project</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section" id="skills">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <div class="sk-label">Data Analytics &amp; Business Intelligence</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Power BI</span><span class="sk-pill">Power Query</span><span class="sk-pill">DAX</span><span class="sk-pill">Microsoft Excel</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="sk-label">Programming &amp; Data Analysis</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Python</span><span class="sk-pill">SQL</span><span class="sk-pill">R</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="sk-label">Libraries</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Pandas</span><span class="sk-pill">NumPy</span><span class="sk-pill">Matplotlib</span><span class="sk-pill">Scikit-learn</span><span class="sk-pill">SHAP</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <div class="sk-label">Analytics</div>
+        <div class="sk-pills">
+          <span class="sk-pill">EDA</span><span class="sk-pill">Feature Engineering</span><span class="sk-pill">Statistical Analysis</span><span class="sk-pill">Dashboard Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section" id="certifications">
+    <div class="section-title">Certifications</div>
+    <div class="cert-list">
+      <div class="cert">
+        <div class="cert-icon aws">☁</div>
+        <div class="cert-info">
+          <p>Introduction to Data Science Job Simulation</p>
+          <span>Forage - Commonwealth Bank &nbsp;·&nbsp; June 2025</span>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon aws">☁</div>
+        <div class="cert-info">
+          <p>AWS Cloud Practitioner Essentials</p>
+          <span>Amazon Web Services &nbsp;·&nbsp; Oct 2025</span>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon pbi">📊</div>
+        <div class="cert-info">
+          <p>Microsoft Power BI Desktop for Business Intelligence</p>
+          <span>Udemy — Maven Analytics &nbsp;·&nbsp; Jan 2026</span>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon pbi">📊</div>
+        <div class="cert-info">
+          <p>Complete Data Analyst Bootcamp: From Basics To Advanced</p>
+          <span>Udemy - Krishai Technologies Private Limited &nbsp;·&nbsp; August 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section" id="achievements">
+    <div class="section-title">Academic Achievements</div>
+    <div class="lead-grid">
+      <div class="lead-card">
+        <div class="lead-icon a">🎓</div>
+        <h3>M.Sc. Computer Science (Data Science) — 86.51%</h3>
+        <span class="lead-sub">Mount Carmel College, Autonomous, Bangalore &nbsp;·&nbsp; 2024–2026</span>
+      </div>
+      <div class="lead-card">
+        <div class="lead-icon b">🤝</div>
+        <h3>Coordinated MCCIIE's First School Outreach Initiative</h3>
+        <span class="lead-sub">Mount Carmel Centre for Innovation Incubation &amp; Entrepreneurship</span>
+      </div>
+      <div class="lead-card">
+        <div class="lead-icon c">📄</div>
+        <h3>Published Research Paper — IJFMR</h3>
+        <span class="lead-sub">"An Explainable Hybrid NLP Framework for Automated Descriptive Answer Evaluation"</span>
+      </div>
+      <div class="lead-card">
+        <div class="lead-icon a">📜</div>
+        <h3>[Add any further awards, conference presentations, or recognitions here]</h3>
+        <span class="lead-sub">Placeholder — supply details to populate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section" id="education">
+    <div class="section-title">Education</div>
+    <div class="edu-list">
+      <div class="edu">
+        <div class="edu-left">
+          <p>M.Sc. Computer Science (Data Science)</p>
+          <span>Mount Carmel College, Autonomous, Bangalore</span>
+        </div>
+        <div class="edu-right">
+          <div class="pct">86.51%</div>
+          <div class="yr">2024 – 2026</div>
+        </div>
+      </div>
+      <div class="edu">
+        <div class="edu-left">
+          <p>B.Sc. Computer Science &amp; Statistics</p>
+          <span>Mount Carmel College, Autonomous, Bangalore</span>
+        </div>
+        <div class="edu-right">
+          <div class="yr">2021 – 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="section">
+    <div class="section-title">Languages</div>
+    <div class="lang-row">
+      <div class="lang"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
+      <div class="lang"><span class="lang-name">Malayalam</span><span class="lang-level">Fluent</span></div>
+      <div class="lang"><span class="lang-name">Kannada</span><span class="lang-level">Fluent</span></div>
+      <div class="lang"><span class="lang-name">Hindi</span><span class="lang-level">Intermediate</span></div>
+      <div class="lang"><span class="lang-name">Tamil</span><span class="lang-level">Conversational</span></div>
+    </div>
+  </div>
+
+  <!-- RESUME -->
+  <div class="section" id="resume">
+    <div class="resume-block">
+      <div>
+        <h3>Resume</h3>
+        <p>Download my resume for the full details.</p>
+      </div>
+      <a class="cta-btn primary" href="teaching-resume.pdf" target="_blank">⬇ Download Teaching Resume</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
+  Gowri J Nair &nbsp;·&nbsp; Available to relocate to Dubai, UAE<br><br>
+  <a href="mailto:gjnair93@gmail.com">gjnair93@gmail.com</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/gowri-j-nair-8471322a6" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+  <a href="https://github.com/gjnair22" target="_blank">GitHub</a>
+</footer>
+
+<!-- ══════════════ LIGHTBOXES ══════════════ -->
+
+<!-- Supply Chain Lightbox -->
+<div id="lb-supplychain" class="lb-inner" style="display:none">
+  <div class="lb-header">
+    <span class="lb-title">📦 Supply Chain Analytics Dashboard</span>
+    <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  </div>
+  <div class="lb-img-wrap">
+    <div class="lb-track" id="lb-supplychain-track">
+      <img src="sc_2.png" alt="Supply Chain — Executive Overview"/>
+      <img src="sc_1.png" alt="Supply Chain — Inventory & Supplier"/>
+    </div>
+    <button class="lb-btn prev" onclick="moveLb('lb-supplychain',-1)">&#10094;</button>
+    <button class="lb-btn next" onclick="moveLb('lb-supplychain',1)">&#10095;</button>
+  </div>
+  <div class="lb-dots" id="lb-supplychain-dots">
+    <span class="lb-dot active" onclick="setLbSlide('lb-supplychain',0)"></span>
+    <span class="lb-dot" onclick="setLbSlide('lb-supplychain',1)"></span>
+  </div>
+</div>
+
+<!-- HR Analytics Lightbox -->
+<div id="lb-hr" class="lb-inner" style="display:none">
+  <div class="lb-header">
+    <span class="lb-title">👥 HR Analytics Dashboard</span>
+    <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  </div>
+  <div class="lb-img-wrap">
+    <div class="lb-track" id="lb-hr-track">
+      <img src="hr_3.png" alt="HR — Executive Summary"/>
+      <img src="hr_2.png" alt="HR — Demographics"/>
+      <img src="hr_1.png" alt="HR — Attrition Drivers"/>
+    </div>
+    <button class="lb-btn prev" onclick="moveLb('lb-hr',-1)">&#10094;</button>
+    <button class="lb-btn next" onclick="moveLb('lb-hr',1)">&#10095;</button>
+  </div>
+  <div class="lb-dots" id="lb-hr-dots">
+    <span class="lb-dot active" onclick="setLbSlide('lb-hr',0)"></span>
+    <span class="lb-dot" onclick="setLbSlide('lb-hr',1)"></span>
+    <span class="lb-dot" onclick="setLbSlide('lb-hr',2)"></span>
+  </div>
+</div>
+
+<!-- Superstore Lightbox -->
+<div id="lb-superstore" class="lb-inner" style="display:none">
+  <div class="lb-header">
+    <span class="lb-title">📊 Superstore Sales &amp; Profit Dashboard</span>
+    <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  </div>
+  <div class="lb-img-wrap">
+    <div class="lb-track" id="lb-superstore-track">
+      <img src="superstore.png" alt="Superstore Dashboard"/>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX OVERLAY -->
+<div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <div id="lightbox-content"></div>
+</div>
+
+<script>
+/* ── CARD CAROUSELS ── */
+function moveCarousel(id,dir){
+  const el=document.getElementById(id);
+  const track=el.querySelector('.carousel-track');
+  const slides=track.children.length;
+  let idx=+(el.dataset.index||0)+dir;
+  if(idx<0)idx=slides-1;
+  if(idx>=slides)idx=0;
+  el.dataset.index=idx;
+  track.style.transform=`translateX(-${idx*100}%)`;
+  el.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+function setSlide(id,idx){
+  const el=document.getElementById(id);
+  const track=el.querySelector('.carousel-track');
+  el.dataset.index=idx;
+  track.style.transform=`translateX(-${idx*100}%)`;
+  el.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+
+/* ── LIGHTBOX ── */
+function openLightbox(id){
+  const lb=document.getElementById('lightbox');
+  const content=document.getElementById('lightbox-content');
+  const inner=document.getElementById(id);
+  content.innerHTML='';
+  content.appendChild(inner.cloneNode(true));
+  const track=content.querySelector('.lb-track');
+  if(track)track.style.transform='translateX(0)';
+  content.querySelectorAll('.lb-dot').forEach((d,i)=>d.classList.toggle('active',i===0));
+  lb.dataset.current=id;
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  const lb=document.getElementById('lightbox');
+  lb.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeLightbox();
+  const lb=document.getElementById('lightbox');
+  if(!lb.classList.contains('open'))return;
+  const id=lb.dataset.current;
+  if(e.key==='ArrowRight')moveLb(id,1);
+  if(e.key==='ArrowLeft')moveLb(id,-1);
+});
+
+function moveLb(id,dir){
+  const content=document.getElementById('lightbox-content');
+  const track=content.querySelector('.lb-track');
+  if(!track)return;
+  const slides=track.children.length;
+  let idx=+(track.dataset.index||0)+dir;
+  if(idx<0)idx=slides-1;
+  if(idx>=slides)idx=0;
+  track.dataset.index=idx;
+  track.style.transform=`translateX(-${idx*100}%)`;
+  content.querySelectorAll('.lb-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+function setLbSlide(id,idx){
+  const content=document.getElementById('lightbox-content');
+  const track=content.querySelector('.lb-track');
+  if(!track)return;
+  track.dataset.index=idx;
+  track.style.transform=`translateX(-${idx*100}%)`;
+  content.querySelectorAll('.lb-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+
+/* ── XAI TAB ── */
+function switchXaiTab(tab){
+  document.getElementById('xai-chart-imp').style.display=tab==='imp'?'flex':'none';
+  document.getElementById('xai-chart-force').style.display=tab==='force'?'flex':'none';
+  document.getElementById('xai-tab-imp').classList.toggle('active',tab==='imp');
+  document.getElementById('xai-tab-force').classList.toggle('active',tab==='force');
+}
+
+/* ── PET BOOKING SIM ── */
+let nextId=106;
+function addBooking(){
+  const pet=document.getElementById('pet-type').value;
+  const svc=document.getElementById('pet-service');
+  const service=svc.options[svc.selectedIndex].text.replace(/ \(\$\d+\)/,'');
+  const tbody=document.getElementById('pet-rows');
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td>#${nextId++}</td><td>${pet}</td><td>${service}</td><td><span style="color:#e65100;font-weight:700">Pending</span></td>`;
+  tr.style.opacity=0;
+  tbody.appendChild(tr);
+  setTimeout(()=>tr.style.cssText+=';opacity:1;transition:opacity .4s',10);
+  if(tbody.children.length>4)tbody.removeChild(tbody.children[0]);
+}
+
+/* ── FADE-UP ON SCROLL ── */
+(function(){
+  const faders=document.querySelectorAll('.fade-up');
+  if(!('IntersectionObserver' in window)){
+    faders.forEach(el=>el.classList.add('in-view'));
+    return;
+  }
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+  faders.forEach(el=>observer.observe(el));
+})();
+</script>
+</body>
+</html>
 
